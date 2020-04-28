@@ -61,6 +61,24 @@ const resolvers = {
       } catch (err) {
         throw err;
       }
+    },
+    logoutUser: async (parent, args, { isAuth, userId, token }) => {
+      if (!isAuth) throw new Error("Please login or signup.");
+
+      try {
+        const user = await User.findById(userId);
+        if (!user) throw new Error("Cannot find user.");
+
+        user.tokens = user.tokens.filter(userToken => {
+          return userToken.token !== token;
+        });
+
+        await user.save();
+
+        return { ...user._doc };
+      } catch (err) {
+        throw err;
+      }
     }
   }
 };

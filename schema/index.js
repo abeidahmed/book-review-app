@@ -24,6 +24,7 @@ const typeDefs = gql`
   type Mutation {
     createUser(userInput: UserInput): AuthData
     loginUser(userInput: UserInput): AuthData
+    logoutUser: User
   }
 `;
 

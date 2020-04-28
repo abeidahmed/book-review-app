@@ -22,7 +22,8 @@ const server = new ApolloServer({
     if (header === "") {
       return {
         isAuth: false,
-        userId: null
+        userId: null,
+        token: null
       };
     }
 
@@ -30,7 +31,8 @@ const server = new ApolloServer({
     if (!token) {
       return {
         isAuth: false,
-        userId: null
+        userId: null,
+        token: null
       };
     }
 
@@ -39,13 +41,15 @@ const server = new ApolloServer({
     if (!user) {
       return {
         isAuth: false,
-        userId: null
+        userId: null,
+        token: null
       };
     }
 
     return {
       isAuth: true,
-      userId: decoded._id
+      userId: decoded._id,
+      token
     };
   }
 });
