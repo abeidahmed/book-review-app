@@ -24,6 +24,7 @@ const typeDefs = gql`
     title: String!
     description: String
     creator: User
+    books: [Book!]!
   }
 
   input CategoryInput {
@@ -31,13 +32,29 @@ const typeDefs = gql`
     description: String
   }
 
+  type Book {
+    _id: ID!
+    title: String!
+    description: String
+    author: User!
+    category: Category!
+  }
+
+  input BookInput {
+    title: String!
+    description: String
+    categoryId: ID!
+  }
+
   type Query {
     users: [User!]!
     categories: [Category!]!
+    books: [Book!]!
   }
 
   type Mutation {
     createCategory(categoryInput: CategoryInput): Category
+    createBook(bookInput: BookInput): Book
     createUser(userInput: UserInput): AuthData
     loginUser(userInput: UserInput): AuthData
     logoutUser: User

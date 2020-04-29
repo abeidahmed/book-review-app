@@ -1,6 +1,6 @@
 const Category = require("../models/category");
 const User = require("../models/user");
-const { findUser } = require("../helper/nest-query");
+const { findBooks, findUser } = require("../helper/nest-query");
 
 const resolvers = {
   Query: {
@@ -8,7 +8,11 @@ const resolvers = {
       try {
         const categories = await Category.find();
         return categories.map(category => {
-          return { ...category._doc, creator: () => findUser(category.creator) };
+          return {
+            ...category._doc,
+            creator: () => findUser(category.creator),
+            books: () => findBooks(category.books)
+          };
         });
       } catch (err) {
         throw err;
@@ -34,7 +38,11 @@ const resolvers = {
 
         user.save();
 
-        return { ...category._doc, creator: () => findUser(category.creator) };
+        return {
+          ...category._doc,
+          creator: () => findUser(category.creator),
+          books: () => findBooks(category.books)
+        };
       } catch (err) {
         throw err;
       }

@@ -4,15 +4,16 @@ const jwt = require("jsonwebtoken");
 const { makeExecutableSchema } = require("graphql-tools");
 const { merge } = require("lodash");
 const mongoose = require("mongoose");
+const User = require("./models/user");
 
 const typeDefs = require("./schema");
+const bookResolver = require("./resolvers/book");
 const categoryResolver = require("./resolvers/category");
 const userResolver = require("./resolvers/user");
-const User = require("./models/user");
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers: merge(userResolver, categoryResolver)
+  resolvers: merge(userResolver, categoryResolver, bookResolver)
 });
 
 const server = new ApolloServer({

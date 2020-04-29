@@ -5,7 +5,6 @@ const categorySchema = new Schema({
   title: {
     type: String,
     required: true,
-    trim: true,
     unique: true,
     maxlength: 255
   },
@@ -13,7 +12,13 @@ const categorySchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,
     ref: "User"
-  }
+  },
+  books: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Book"
+    }
+  ]
 });
 
 module.exports = mongoose.model("Category", categorySchema);
