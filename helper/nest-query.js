@@ -33,7 +33,7 @@ const findCategory = async id => {
 const findUser = async id => {
   try {
     const user = await User.findById(id);
-    return { ...user._doc };
+    return { ...user._doc, books: () => findBooks(user.books) };
   } catch (err) {
     throw err;
   }
