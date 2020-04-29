@@ -6,12 +6,13 @@ const { merge } = require("lodash");
 const mongoose = require("mongoose");
 
 const typeDefs = require("./schema");
+const categoryResolver = require("./resolvers/category");
 const userResolver = require("./resolvers/user");
 const User = require("./models/user");
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers: merge(userResolver)
+  resolvers: merge(userResolver, categoryResolver)
 });
 
 const server = new ApolloServer({

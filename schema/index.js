@@ -19,11 +19,24 @@ const typeDefs = gql`
     password: String!
   }
 
+  type Category {
+    _id: ID!
+    title: String!
+    description: String
+  }
+
+  input CategoryInput {
+    title: String!
+    description: String
+  }
+
   type Query {
     users: [User!]!
+    categories: [Category!]!
   }
 
   type Mutation {
+    createCategory(categoryInput: CategoryInput): Category
     createUser(userInput: UserInput): AuthData
     loginUser(userInput: UserInput): AuthData
     logoutUser: User
