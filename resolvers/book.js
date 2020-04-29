@@ -45,11 +45,19 @@ const resolvers = {
 
         await book.save();
 
+        /**
+         * Find the category that the book is listed to and push the book
+         * into the category field.
+         */
         const category = await Category.findById(categoryId);
         if (!category) throw new Error("Cannot find category.");
         category.books.push(book);
         await category.save();
 
+        /**
+         * Find the user who created the book and push the book id into
+         * the user's book field.
+         */
         const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
         user.books.push(book);

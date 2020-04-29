@@ -38,6 +38,9 @@ const resolvers = {
           password
         });
 
+        /**
+         * Generate jwt token. Function listed in user model.
+         */
         const token = await user.generateAuthToken();
 
         await user.save();
@@ -56,6 +59,9 @@ const resolvers = {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) throw new Error("Invalid credentials");
 
+        /**
+         * Generate jwt token. Function listed in user model.
+         */
         const token = await user.generateAuthToken();
 
         return { ...user._doc, token };
@@ -70,6 +76,9 @@ const resolvers = {
         const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
 
+        /**
+         * Delete the token from the user collection.
+         */
         user.tokens = user.tokens.filter(userToken => {
           return userToken.token !== token;
         });

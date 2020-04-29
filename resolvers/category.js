@@ -42,6 +42,10 @@ const resolvers = {
 
         await category.save();
 
+        /**
+         * Find the user who created the category and push the category id into
+         * the user's category field.
+         */
         const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
 
