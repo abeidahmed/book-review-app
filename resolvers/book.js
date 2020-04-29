@@ -3,17 +3,21 @@ const Category = require("../models/category");
 const User = require("../models/user");
 const { findCategory, findUser } = require("../helper/nest-query");
 
+const bookMeta = book => {
+  return {
+    ...book._doc,
+    creator: () => findUser(book.creator),
+    category: () => findCategory(book.category)
+  };
+};
+
 const resolvers = {
   Query: {
     books: async () => {
       try {
         const books = await Book.find();
         return books.map(book => {
-          return {
-            ...book._doc,
-            creator: () => findUser(book.creator),
-            category: () => findCategory(book.category)
-          };
+          return bookMeta(book);
         });
       } catch (err) {
         throw err;
@@ -44,11 +48,7 @@ const resolvers = {
         user.books.push(book);
         await user.save();
 
-        return {
-          ...book._doc,
-          creator: () => findUser(book.creator),
-          category: () => findCategory(book.category)
-        };
+        return bookMeta(book);
       } catch (err) {
         throw err;
       }
