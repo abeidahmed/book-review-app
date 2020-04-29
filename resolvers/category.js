@@ -1,14 +1,6 @@
 const Category = require("../models/category");
 const User = require("../models/user");
-
-const findUser = async id => {
-  try {
-    const user = await User.findById(id);
-    return { ...user._doc };
-  } catch (err) {
-    throw err;
-  }
-};
+const { findUser } = require("../helper/nest-query");
 
 const resolvers = {
   Query: {
@@ -16,7 +8,7 @@ const resolvers = {
       try {
         const categories = await Category.find();
         return categories.map(category => {
-          return { ...category._doc };
+          return { ...category._doc, creator: () => findUser(category.creator) };
         });
       } catch (err) {
         throw err;

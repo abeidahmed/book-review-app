@@ -23,6 +23,7 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     description: String
+    creator: User
   }
 
   input CategoryInput {
