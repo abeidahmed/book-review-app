@@ -11,7 +11,7 @@ const resolvers = {
         return books.map(book => {
           return {
             ...book._doc,
-            author: () => findUser(book.author),
+            creator: () => findUser(book.creator),
             category: () => findCategory(book.category)
           };
         });
@@ -27,8 +27,9 @@ const resolvers = {
         const book = new Book({
           title: args.bookInput.title,
           description: args.bookInput.description,
-          author: context.userId,
-          category: args.bookInput.categoryId
+          author: args.bookInput.author,
+          category: args.bookInput.categoryId,
+          creator: context.userId
         });
 
         await book.save();
@@ -45,7 +46,7 @@ const resolvers = {
 
         return {
           ...book._doc,
-          author: () => findUser(book.author),
+          creator: () => findUser(book.creator),
           category: () => findCategory(book.category)
         };
       } catch (err) {

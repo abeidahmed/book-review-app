@@ -37,14 +37,16 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     description: String
-    author: User!
+    author: String!
     category: Category!
+    creator: User!
   }
 
   input BookInput {
     title: String!
     description: String
     categoryId: ID!
+    author: String!
   }
 
   type Query {

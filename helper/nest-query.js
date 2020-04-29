@@ -6,7 +6,11 @@ const findBooks = async ids => {
   try {
     const books = await Book.find({ _id: { $in: ids } });
     return books.map(book => {
-      return { ...book._doc, category: () => findCategory(book.category) };
+      return {
+        ...book._doc,
+        category: () => findCategory(book.category),
+        creator: () => findUser(book.creator)
+      };
     });
   } catch (err) {
     throw err;
@@ -16,7 +20,11 @@ const findBooks = async ids => {
 const findCategory = async id => {
   try {
     const category = await Category.findById(id);
-    return { ...category._doc, books: () => findBooks(category.books) };
+    return {
+      ...category._doc,
+      books: () => findBooks(category.books),
+      creator: () => findUser(category.creator)
+    };
   } catch (err) {
     throw err;
   }
