@@ -41,7 +41,7 @@ const resolvers = {
         const user = await User.findById(context.userId);
         if (!user) throw new Error("Cannot find user.");
         user.books.push(book);
-        await book.save();
+        await user.save();
 
         return {
           ...book._doc,
