@@ -6,7 +6,7 @@ During the days to come, I'll make it an effort to write some lines of code ever
 
 #### About the app
 
-The app will be a full-stack app and currently I'm writing the backend for the app.
+The app will be a full-stack app with jwt token authentication and more.
 The tech stack I'll be using are:
 
 - Apollo server
