@@ -6,6 +6,7 @@ const typeDefs = gql`
     email: String!
     firstName: String
     lastName: String
+    books: [Book!]!
   }
 
   type AuthData {
@@ -23,7 +24,7 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     description: String
-    creator: User
+    creator: User!
     books: [Book!]!
   }
 

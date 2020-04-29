@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
 const User = require("../models/user");
+const { findBooks } = require("../helper/nest-query");
 
 const resolvers = {
   Query: {
@@ -10,7 +11,7 @@ const resolvers = {
       try {
         const users = await User.find();
         return users.map(user => {
-          return { ...user._doc };
+          return { ...user._doc, books: () => findBooks(user.books) };
         });
       } catch (err) {
         throw err;
