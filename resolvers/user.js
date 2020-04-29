@@ -29,7 +29,7 @@ const resolvers = {
         }
 
         const isMatch = await User.findOne({ email });
-        if (isMatch) throw new Error("Email is already registered.");
+        if (isMatch) throw new Error("Email address is already registered.");
 
         if (password.length < 6) throw new Error("Too short. Min length is 6.");
 
@@ -64,7 +64,7 @@ const resolvers = {
       }
     },
     logoutUser: async (parent, args, { isAuth, userId, token }) => {
-      if (!isAuth) throw new Error("Please login or signup.");
+      if (!isAuth) throw new Error("You are already logged out.");
 
       try {
         const user = await User.findById(userId);
