@@ -25,17 +25,24 @@ const resolvers = {
   },
 
   Mutation: {
-    createCategory: async (parent, args, context) => {
+    createCategory: async (parent, args, { isAuth, userId }) => {
+      const { title, description } = args.categoryInput;
+
+      if (!isAuth) throw new Error("Please signup or login.");
+
+      const isMatch = await Category.findOne({ title });
+      if (isMatch) throw new Error("Category already exists.");
+
       try {
         const category = new Category({
-          title: args.categoryInput.title,
-          description: args.categoryInput.description,
-          creator: context.userId
+          title,
+          description,
+          creator: userId
         });
 
         await category.save();
 
-        const user = await User.findById(context.userId);
+        const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
 
         user.categories.push(category);
