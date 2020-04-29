@@ -26,24 +26,31 @@ const resolvers = {
   },
 
   Mutation: {
-    createBook: async (parent, args, context) => {
+    createBook: async (parent, args, { isAuth, userId }) => {
+      const { title, description, author, categoryId } = args.bookInput;
+
+      if (!isAuth) throw new Error("Please signup or login.");
+
+      const isMatch = await Book.findOne({ title });
+      if (isMatch) throw new Error("Book already exists. Create another book.");
+
       try {
         const book = new Book({
-          title: args.bookInput.title,
-          description: args.bookInput.description,
-          author: args.bookInput.author,
-          category: args.bookInput.categoryId,
-          creator: context.userId
+          title,
+          description,
+          author,
+          category: categoryId,
+          creator: userId
         });
 
         await book.save();
 
-        const category = await Category.findById(args.bookInput.categoryId);
+        const category = await Category.findById(categoryId);
         if (!category) throw new Error("Cannot find category.");
         category.books.push(book);
         await category.save();
 
-        const user = await User.findById(context.userId);
+        const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
         user.books.push(book);
         await user.save();
