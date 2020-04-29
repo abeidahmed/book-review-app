@@ -7,12 +7,14 @@ const userSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
-    maxlength: 255
+    maxlength: 255,
+    set: capitalize
   },
   lastName: {
     type: String,
     trim: true,
-    maxlength: 255
+    maxlength: 255,
+    set: capitalize
   },
   email: {
     type: String,
@@ -48,6 +50,11 @@ const userSchema = new Schema({
     }
   ]
 });
+
+// capitalize string before storing in the db
+function capitalize(val) {
+  return val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+}
 
 userSchema.methods.generateAuthToken = async function() {
   const user = this;
