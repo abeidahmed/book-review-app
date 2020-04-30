@@ -21,37 +21,33 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     const header = req.headers.authorization || "";
 
-    if (header === "") {
-      return {
-        isAuth: false,
-        userId: null,
-        token: null
-      };
-    }
-
     const token = header.replace("Bearer ", "");
-    if (!token) {
-      return {
-        isAuth: false,
-        userId: null,
-        token: null
-      };
-    }
-
     const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
+
     const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
-    if (!user) {
-      return {
-        isAuth: false,
-        userId: null,
-        token: null
-      };
+    if (user) {
+      if (user.role === "User") {
+        return {
+          isAdmin: false,
+          isAuth: true,
+          userId: decoded._id,
+          token
+        };
+      } else if (user.role === "Admin") {
+        return {
+          isAdmin: true,
+          isAuth: true,
+          userId: decoded._id,
+          token
+        };
+      }
     }
 
     return {
-      isAuth: true,
-      userId: decoded._id,
-      token
+      isAdmin: false,
+      isAuth: false,
+      userId: null,
+      token: null
     };
   }
 });

@@ -26,10 +26,10 @@ const resolvers = {
   },
 
   Mutation: {
-    createBook: async (parent, args, { isAuth, userId }) => {
+    createBook: async (parent, args, { isAdmin, isAuth, userId }) => {
       const { title, description, author, categoryId } = args.bookInput;
 
-      if (!isAuth) throw new Error("Please signup or login.");
+      if (!isAdmin && !isAuth) throw new Error("Unauthorized user.");
 
       const isMatch = await Book.findOne({ title });
       if (isMatch) throw new Error("Book already exists. Create another book.");
