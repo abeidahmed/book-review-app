@@ -22,5 +22,11 @@ A normal user can view the book, leave a review etc.
 
 - Clone the repo
 - `cd book-review-app`
+- `npm install`
+- Create a `.env` file in the root of the app with the following key value pairs:
+  - `MONGO_URI=your_mongodb_uri`
+  - `AUTH_SECRET_KEY=secretkey`
 - `npm run dev` to start the backend server
-- `cd client && npm start` to start the react-app
+- `cd client`
+- `npm install`
+- `npm start` to start the react-app
