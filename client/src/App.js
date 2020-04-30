@@ -1,11 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PublicRoute from "routes/public-route";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="text-indigo-500 bg-gray-100">hello world</header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={PublicRoute} />
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
