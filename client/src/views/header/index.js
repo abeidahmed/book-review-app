@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Avatar } from "components/avatar";
 import DesktopLink from "./components/desktop-link";
 import Logo from "./components/logo";
@@ -26,7 +26,15 @@ const Header = ({ location }) => {
             <DesktopLink />
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="ml-3 relative">
+            <div className="hidden sm:block">
+              <Link
+                to="/sign_up"
+                className="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+              >
+                Sign up
+              </Link>
+            </div>
+            <div className="ml-5 relative">
               <Avatar toggleDropdown={setProfileActive} dropdownState={profileActive} />
               <div
                 className={`${

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MobileLink = () => {
   return (
@@ -27,6 +28,12 @@ const MobileLink = () => {
       >
         Calendar
       </a>
+      <Link
+        to="/sign_up"
+        className="mt-3 block px-3 py-2 rounded-md text-center text-base font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:bg-indigo-700 transition duration-150 ease-in-out"
+      >
+        Sign up
+      </Link>
     </div>
   );
 };
