@@ -48,10 +48,8 @@ const resolvers = {
          */
         const user = await User.findById(userId);
         if (!user) throw new Error("Cannot find user.");
-
         user.categories.push(category);
-
-        user.save();
+        await user.save();
 
         return categoryMeta(category);
       } catch (err) {
