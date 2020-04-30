@@ -29,3 +29,11 @@
   font-style: normal;
   font-display: block;
 }
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-ExtraBold"), url("../font/Inter-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: block;
+}
