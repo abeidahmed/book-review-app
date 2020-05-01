@@ -7,15 +7,36 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import "assets/stylesheet/font.css";
 import "assets/stylesheet/main.css";
 import App from "App";
+import { resolvers, typeDefs } from "graphql/resolvers";
 
 const cache = new InMemoryCache();
+
+const token = localStorage.getItem("token");
+let authorization;
+if (token) {
+  authorization = `Bearer ${localStorage.getItem("token")}`;
+} else {
+  authorization = "";
+}
+
 const link = new HttpLink({
-  uri: "http://localhost:4000/"
+  headers: {
+    authorization
+  },
+  uri: "/graphql"
+});
+
+cache.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem("token")
+  }
 });
 
 const client = new ApolloClient({
   cache,
-  link
+  link,
+  typeDefs,
+  resolvers
 });
 
 ReactDOM.render(
