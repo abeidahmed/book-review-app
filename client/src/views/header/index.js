@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { Avatar } from "components/avatar";
 import DesktopLink from "./components/desktop-link";
+import { Dropdown } from "components/dropdown";
 import { IS_LOGGED_IN } from "api/is-auth";
 import Logo from "./components/logo";
 import MenuButton from "./components/menu-button";
@@ -33,13 +34,9 @@ const Header = ({ location }) => {
             {data.isLoggedIn ? (
               <div className="ml-5 relative">
                 <Avatar toggleDropdown={setProfileActive} dropdownState={profileActive} />
-                <div
-                  className={`${
-                    profileActive ? "block" : "hidden"
-                  } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg`}
-                >
+                <Dropdown isActive={profileActive} onOutsideClick={() => setProfileActive(false)}>
                   <ProfileLink />
-                </div>
+                </Dropdown>
               </div>
             ) : (
               <div className="hidden sm:flex items-center">
