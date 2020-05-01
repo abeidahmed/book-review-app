@@ -5,7 +5,7 @@ export const Avatar = ({ toggleDropdown }) => {
     <div>
       <button
         onClick={() => toggleDropdown(true)}
-        className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+        className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-600 transition duration-150 ease-in-out"
       >
         <img
           className="h-8 w-8 rounded-full"
