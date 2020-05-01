@@ -42,10 +42,16 @@ const Header = ({ location }) => {
                 </div>
               </div>
             ) : (
-              <div className="hidden sm:block">
+              <div className="hidden sm:flex items-center">
+                <Link
+                  to="/login"
+                  className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
+                >
+                  Login
+                </Link>
                 <Link
                   to="/sign_up"
-                  className="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                  className="sm:ml-4 flex justify-center px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:bg-indigo-700 transition duration-150 ease-in-out"
                 >
                   Sign up
                 </Link>
