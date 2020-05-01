@@ -14,7 +14,7 @@ const cache = new InMemoryCache();
 const token = localStorage.getItem("token");
 let authorization;
 if (token) {
-  authorization = `Bearer ${localStorage.getItem("token")}`;
+  authorization = `Bearer ${token}`;
 } else {
   authorization = "";
 }
@@ -28,7 +28,7 @@ const link = new HttpLink({
 
 cache.writeData({
   data: {
-    isLoggedIn: !!localStorage.getItem("token")
+    isLoggedIn: !!token
   }
 });
 
