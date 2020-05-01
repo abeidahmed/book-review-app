@@ -11,7 +11,7 @@ The tech stack I'll be using are:
 
 - Apollo server
 - MongoDB (Mongoose)
-- Apollo client (Probably, haven't decided)
+- Apollo client
 - React
 - Tailwindcss
 
@@ -23,10 +23,10 @@ A normal user can view the book, leave a review etc.
 - Clone the repo
 - `cd book-review-app`
 - `npm install`
+- `npm client-install`
 - Create a `.env` file in the root of the app with the following key value pairs:
   - `MONGO_URI=your_mongodb_uri`
   - `AUTH_SECRET_KEY=secretkey`
-- `npm run dev` to start the backend server
-- `cd client`
-- `npm install`
-- `npm start` to start the react-app
+- `npm run dev` to start the frontend as well as the backend server.
+
+The backend server runs on `localhost:4000` and the react app runs on `localhost:3000`
