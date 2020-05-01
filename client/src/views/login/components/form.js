@@ -1,26 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "components/icon";
 
-const Form = () => {
+const Form = ({ login }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    login({
+      variables: {
+        email: email,
+        password: password
+      }
+    });
+  };
+
   return (
-    <form className="mt-8">
+    <form onSubmit={handleSubmit} className="mt-8">
       <div className="rounded-md shadow-sm">
         <div>
           <input
-            aria-label="Email address"
-            name="email"
             type="email"
+            value={email}
             required
+            onChange={e => setEmail(e.target.value)}
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
             placeholder="Email address"
           />
         </div>
         <div className="-mt-px">
           <input
-            aria-label="Password"
-            name="password"
             type="password"
+            value={password}
             required
+            onChange={e => setPassword(e.target.value)}
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
             placeholder="Password"
           />
