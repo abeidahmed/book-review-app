@@ -33,7 +33,7 @@ const Header = ({ location }) => {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {data.isLoggedIn ? (
               <div className="ml-5 relative">
-                <Avatar toggleDropdown={setProfileActive} dropdownState={profileActive} />
+                <Avatar toggleDropdown={setProfileActive} />
                 <Dropdown isActive={profileActive} onOutsideClick={() => setProfileActive(false)}>
                   <ProfileLink />
                 </Dropdown>

@@ -1,10 +1,10 @@
 import React from "react";
 
-export const Avatar = ({ toggleDropdown, dropdownState }) => {
+export const Avatar = ({ toggleDropdown }) => {
   return (
     <div>
       <button
-        onClick={() => toggleDropdown(!dropdownState)}
+        onClick={() => toggleDropdown(true)}
         className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
       >
         <img
