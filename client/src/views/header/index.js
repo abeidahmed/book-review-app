@@ -22,7 +22,7 @@ const Header = ({ location }) => {
   }
 
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-white border-b">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <MenuButton toggleMenu={setMenuActive} menuState={menuActive} />
@@ -42,7 +42,7 @@ const Header = ({ location }) => {
               <div className="hidden sm:flex items-center">
                 <Link
                   to="/login"
-                  className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
+                  className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   Login
                 </Link>

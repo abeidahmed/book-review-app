@@ -1,5 +1,5 @@
 import React from "react";
-import LogoDark from "assets/logo/logo-dark.svg";
+import LogoDark from "assets/logo/logo-full.svg";
 import LogoMark from "assets/logo/logo-mark.svg";
 
 const Logo = () => {
