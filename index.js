@@ -22,24 +22,27 @@ const server = new ApolloServer({
     const header = req.headers.authorization || "";
 
     const token = header.replace("Bearer ", "");
-    const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
 
-    const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
-    if (user) {
-      if (user.role === "User") {
-        return {
-          isAdmin: false,
-          isAuth: true,
-          userId: decoded._id,
-          token
-        };
-      } else if (user.role === "Admin") {
-        return {
-          isAdmin: true,
-          isAuth: true,
-          userId: decoded._id,
-          token
-        };
+    if (header !== "" && token) {
+      const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
+
+      const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
+      if (user) {
+        if (user.role === "User") {
+          return {
+            isAdmin: false,
+            isAuth: true,
+            userId: decoded._id,
+            token
+          };
+        } else if (user.role === "Admin") {
+          return {
+            isAdmin: true,
+            isAuth: true,
+            userId: decoded._id,
+            token
+          };
+        }
       }
     }
 
