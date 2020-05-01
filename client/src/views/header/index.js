@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
 import { Avatar } from "components/avatar";
 import DesktopLink from "./components/desktop-link";
+import { IS_LOGGED_IN } from "api/is-auth";
 import Logo from "./components/logo";
 import MenuButton from "./components/menu-button";
 import MobileLink from "./components/mobile-link";
 import ProfileLink from "./components/profile-link";
 
 const Header = ({ location }) => {
+  const { data } = useQuery(IS_LOGGED_IN);
+
   const [menuActive, setMenuActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
 
@@ -26,24 +30,27 @@ const Header = ({ location }) => {
             <DesktopLink />
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="hidden sm:block">
-              <Link
-                to="/sign_up"
-                className="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-              >
-                Sign up
-              </Link>
-            </div>
-            <div className="ml-5 relative">
-              <Avatar toggleDropdown={setProfileActive} dropdownState={profileActive} />
-              <div
-                className={`${
-                  profileActive ? "block" : "hidden"
-                } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg`}
-              >
-                <ProfileLink />
+            {data.isLoggedIn ? (
+              <div className="ml-5 relative">
+                <Avatar toggleDropdown={setProfileActive} dropdownState={profileActive} />
+                <div
+                  className={`${
+                    profileActive ? "block" : "hidden"
+                  } origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg`}
+                >
+                  <ProfileLink />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="hidden sm:block">
+                <Link
+                  to="/sign_up"
+                  className="flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                >
+                  Sign up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
