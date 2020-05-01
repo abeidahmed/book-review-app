@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "react-start": "cd client && npm start",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"npm run react-start\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.3"
   }
 }
