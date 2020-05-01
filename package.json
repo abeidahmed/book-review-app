@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "react-start": "cd client && npm start",
+    "client-install": "cd client && npm install",
     "server": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run react-start\""
   },
