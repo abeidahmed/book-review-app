@@ -29,10 +29,10 @@ const MobileLink = () => {
         Calendar
       </a>
       <Link
-        to="/sign_up"
-        className="mt-3 block px-3 py-2 rounded-md text-center text-base font-medium text-white bg-indigo-600 focus:bg-indigo-700 transition duration-150 ease-in-out"
+        to="/login"
+        className="mt-3 block px-3 py-2 rounded-md text-center text-base font-medium text-white bg-gray-700 focus:bg-gray-800 transition duration-150 ease-in-out"
       >
-        Sign up
+        Login
       </Link>
     </div>
   );

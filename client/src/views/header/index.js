@@ -39,10 +39,10 @@ const Header = ({ location }) => {
                 </Dropdown>
               </div>
             ) : (
-              <div className="hidden sm:flex items-center">
+              <div className="sm:flex items-center">
                 <Link
                   to="/login"
-                  className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
+                  className="hidden sm:block px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   Login
                 </Link>
