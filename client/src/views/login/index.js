@@ -8,7 +8,7 @@ import Header from "./components/header";
 export default function Login() {
   const client = useApolloClient();
   const history = useHistory();
-  const [login, {}] = useMutation(LOGIN_USER, {
+  const [login] = useMutation(LOGIN_USER, {
     onCompleted(login) {
       localStorage.setItem("token", login.loginUser.token);
       client.writeData({ data: { isLoggedIn: true } });

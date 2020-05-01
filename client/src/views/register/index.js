@@ -8,7 +8,7 @@ import Header from "./components/header";
 export default function Register() {
   const client = useApolloClient();
   const history = useHistory();
-  const [signup, { loading, error }] = useMutation(REGISTER_USER, {
+  const [signup] = useMutation(REGISTER_USER, {
     onCompleted(signup) {
       localStorage.setItem("token", signup.createUser.token);
       client.writeData({ data: { isLoggedIn: true } });
