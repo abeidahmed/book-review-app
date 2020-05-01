@@ -11,7 +11,7 @@ const MenuButton = ({ toggleMenu, menuState }) => {
         {menuState ? (
           <Icon icon="close" className="h-6 w-6" />
         ) : (
-          <Icon icon="menu-left" className="block h-6 w-6" />
+          <Icon icon="menu" className="block h-6 w-6" />
         )}
       </button>
     </div>

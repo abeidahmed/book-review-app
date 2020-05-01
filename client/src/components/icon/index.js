@@ -107,10 +107,10 @@ const Glyph = ({ icon }) => {
           <path d="M20,12c0-1.103-0.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7,4.243,7,7v3H6c-1.103,0-2,0.897-2,2v8c0,1.103,0.897,2,2,2h12 c1.103,0,2-0.897,2-2V12z M9,7c0-1.654,1.346-3,3-3s3,1.346,3,3v3H9V7z" />
         </g>
       );
-    case "menu-left":
+    case "menu":
       return (
         <g>
-          <path d="M4 11H16V13H4V11ZM4 6H20V8H4V6ZM4 18H11H11.235V16H11H4V18Z" />
+          <path d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z" />
         </g>
       );
     case "message":
