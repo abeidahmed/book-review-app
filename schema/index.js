@@ -7,6 +7,8 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     books: [Book!]!
+    createdAt: String
+    updatedAt: String
   }
 
   type AuthData {
@@ -26,6 +28,9 @@ const typeDefs = gql`
     description: String
     creator: User!
     books: [Book!]!
+    bookCount: Int!
+    createdAt: String
+    updatedAt: String
   }
 
   input CategoryInput {
@@ -41,7 +46,7 @@ const typeDefs = gql`
     category: Category!
     creator: User!
     createdAt: String
-    updateAt: String
+    updatedAt: String
   }
 
   input BookInput {
