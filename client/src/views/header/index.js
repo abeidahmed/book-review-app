@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation, useApolloClient } from "@apollo/react-hooks";
 import { Avatar } from "components/avatar";
 import DesktopLink from "./components/desktop-link";
 import { Dropdown } from "components/dropdown";
 import { IS_LOGGED_IN } from "api/is-auth";
 import Logo from "./components/logo";
+import { LOGOUT_USER } from "api/user/logout-user";
 import MenuButton from "./components/menu-button";
 import MobileLink from "./components/mobile-link";
 import ProfileLink from "./components/profile-link";
 
 const Header = ({ location }) => {
+  const client = useApolloClient();
   const { data } = useQuery(IS_LOGGED_IN);
+  const [logout] = useMutation(LOGOUT_USER, {
+    onCompleted(logout) {
+      client.writeData({ data: { isLoggedIn: false } });
+      localStorage.removeItem("token");
+    }
+  });
 
   const [menuActive, setMenuActive] = useState(false);
   const [profileActive, setProfileActive] = useState(false);
@@ -35,7 +43,7 @@ const Header = ({ location }) => {
               <div className="ml-5 relative">
                 <Avatar toggleDropdown={setProfileActive} />
                 <Dropdown isActive={profileActive} onOutsideClick={() => setProfileActive(false)}>
-                  <ProfileLink />
+                  <ProfileLink logout={logout} />
                 </Dropdown>
               </div>
             ) : (
