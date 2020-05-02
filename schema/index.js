@@ -7,6 +7,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     books: [Book!]!
+    role: String!
     createdAt: String
     updatedAt: String
   }
