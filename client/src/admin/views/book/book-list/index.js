@@ -1,11 +1,8 @@
 import React from "react";
+import { AdminLayout } from "components/layout";
 
 const BookList = () => {
-  return (
-    <div>
-      <h1>booklist</h1>
-    </div>
-  );
+  return <AdminLayout>hello world</AdminLayout>;
 };
 
 export default BookList;
