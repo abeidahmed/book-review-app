@@ -5,6 +5,7 @@ import CategoryList from "admin/views/category/category-list";
 import Dashboard from "admin/views/dashboard";
 import Header from "admin/views/header";
 import Sidebar from "admin/views/sidebar";
+import UserList from "admin/views/user/user-list";
 
 const AdminRoute = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -18,6 +19,7 @@ const AdminRoute = () => {
           <Route path="/admin/books" component={BookList} />
           <Route path="/admin/dashboard" component={Dashboard} />
           <Route path="/admin/categories" component={CategoryList} />
+          <Route path="/admin/users" component={UserList} />
         </Switch>
       </div>
     </div>

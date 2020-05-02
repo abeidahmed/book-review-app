@@ -22,7 +22,7 @@ const SidebarLink = () => {
     {
       title: "Users",
       icon: "users",
-      path: "/mamakane"
+      path: "/admin/users"
     }
   ];
 
