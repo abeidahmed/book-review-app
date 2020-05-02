@@ -12,14 +12,14 @@ const CategoryList = () => {
 
   return (
     <AdminLayout>
-      <div className="lg:flex lg:items-center lg:justify-between">
+      <div className="sm:flex sm:items-center sm:justify-between">
         <div className="flex-1 min-w-0">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
             Category list
           </h2>
         </div>
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
-          <span className="sm:ml-3 shadow-sm rounded-md">
+          <span className="shadow-sm rounded-md">
             <button
               type="button"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
