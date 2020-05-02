@@ -69,7 +69,6 @@ const typeDefs = gql`
     createBook(bookInput: BookInput): Book
     createUser(userInput: UserInput): AuthData
     loginUser(userInput: UserInput): AuthData
-    logoutUser: User
   }
 `;
 

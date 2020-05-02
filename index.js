@@ -25,7 +25,7 @@ const server = new ApolloServer({
       const token = header.replace("Bearer ", "");
       const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
 
-      const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
+      const user = await User.findOne({ _id: decoded._id });
       if (user) {
         if (user.role === "User") {
           return {

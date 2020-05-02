@@ -1,8 +1,11 @@
 import React from "react";
+import { useApolloClient } from "@apollo/react-hooks";
 
-const ProfileLink = ({ logout }) => {
+const ProfileLink = () => {
+  const client = useApolloClient();
   const handleLogout = () => {
-    logout();
+    client.writeData({ data: { isLoggedIn: false } });
+    localStorage.removeItem("token");
   };
 
   return (

@@ -36,14 +36,6 @@ const userSchema = new Schema(
       required: true,
       default: "User"
     },
-    tokens: [
-      {
-        token: {
-          type: String,
-          required: true
-        }
-      }
-    ],
     categories: [
       {
         type: Schema.Types.ObjectId,
@@ -68,11 +60,7 @@ function capitalize(val) {
 // generate jwt token
 userSchema.methods.generateAuthToken = async function() {
   const user = this;
-
   const token = jwt.sign({ _id: user._id.toString() }, process.env.AUTH_SECRET_KEY);
-  user.tokens = user.tokens.concat({ token });
-  await user.save();
-
   return token;
 };
 
