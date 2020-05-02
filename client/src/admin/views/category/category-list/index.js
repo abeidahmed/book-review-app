@@ -4,11 +4,12 @@ import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
 import { GET_CATEGORIES } from "api/category/category-list";
 import Icon from "components/icon";
+import { Spinner } from "components/spinner";
 
 const CategoryList = () => {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
-  if (loading || error) return <p>Loading...</p>;
+  if (loading || error) return <Spinner />;
 
   return (
     <AdminLayout>

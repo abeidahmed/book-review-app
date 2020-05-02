@@ -2,12 +2,13 @@ import React from "react";
 import moment from "moment";
 import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
+import { Spinner } from "components/spinner";
 import { USER_LIST } from "api/user/user-list";
 
 const UserList = () => {
   const { data, loading, error } = useQuery(USER_LIST);
 
-  if (loading || error) return <p>Loading...</p>;
+  if (loading || error) return <Spinner />;
 
   return (
     <AdminLayout>

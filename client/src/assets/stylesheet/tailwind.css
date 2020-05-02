@@ -2,4 +2,22 @@
 
 @import "tailwindcss/components";
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 4px solid #ebf4ff;
+  border-radius: 50%;
+  border-top: 4px solid #5850ec;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
 @import "tailwindcss/utilities";

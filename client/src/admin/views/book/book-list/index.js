@@ -4,11 +4,12 @@ import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
 import { GET_BOOKS } from "api/book/book-list";
 import Icon from "components/icon";
+import { Spinner } from "components/spinner";
 
 const BookList = () => {
   const { data, loading, error } = useQuery(GET_BOOKS);
 
-  if (loading || error) return <p>Loading...</p>;
+  if (loading || error) return <Spinner />;
 
   return (
     <AdminLayout>
