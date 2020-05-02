@@ -17,7 +17,7 @@ const SidebarLink = () => {
     {
       title: "Categories",
       icon: "slider",
-      path: "/hello-world"
+      path: "/admin/categories"
     },
     {
       title: "Users",
