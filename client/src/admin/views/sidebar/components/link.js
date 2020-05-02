@@ -30,6 +30,7 @@ const SidebarLink = () => {
     <nav className="mt-2 px-1 text-gray-600 font-medium">
       {links.map(link => (
         <NavLink
+          key={link.title}
           to={link.path}
           activeClassName="bg-gray-100 text-gray-900"
           className="mt-1 flex items-center hover:bg-gray-100 px-2 py-2 rounded transition duration-150 ease-in-out"
