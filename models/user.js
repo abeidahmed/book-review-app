@@ -76,6 +76,11 @@ userSchema.methods.generateAuthToken = async function() {
   return token;
 };
 
+// create a virtual field for user's fullname
+userSchema.virtual("fullName").get(function() {
+  return `${this.firstName} ${this.lastName}`;
+});
+
 // hash password before saving the user
 userSchema.pre("save", async function(next) {
   const user = this;

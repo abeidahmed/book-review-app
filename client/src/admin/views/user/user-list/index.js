@@ -51,7 +51,9 @@ const UserList = () => {
                         />
                       </div>
                       <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">Bernard Lane</div>
+                        <div class="text-sm leading-5 font-medium text-gray-900">
+                          {user.fullName.startsWith("undefined") ? "Name less" : user.fullName}
+                        </div>
                       </div>
                     </div>
                   </td>

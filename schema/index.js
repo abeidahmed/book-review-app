@@ -6,6 +6,7 @@ const typeDefs = gql`
     email: String!
     firstName: String
     lastName: String
+    fullName: String
     books: [Book!]!
     role: String!
     createdAt: String

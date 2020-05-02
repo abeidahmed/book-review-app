@@ -13,6 +13,7 @@ const resolvers = {
         return users.map(user => {
           return {
             ...user._doc,
+            fullName: user.fullName,
             books: () => findBooks(user.books),
             createdAt: user.createdAt.toISOString(),
             updatedAt: user.updatedAt.toISOString()

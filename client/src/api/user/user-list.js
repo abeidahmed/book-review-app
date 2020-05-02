@@ -7,6 +7,7 @@ export const USER_LIST = gql`
       email
       firstName
       lastName
+      fullName
       role
       createdAt
       updatedAt
