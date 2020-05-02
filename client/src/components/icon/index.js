@@ -126,6 +126,12 @@ const Glyph = ({ icon }) => {
           <path d="M2 12H9V14H2V12ZM4 15H10V17H4V15ZM7 18H11V20H7V18Z" />
         </g>
       );
+    case "plus":
+      return (
+        <g>
+          <path d="M19 11L13 11 13 5 11 5 11 11 5 11 5 13 11 13 11 19 13 19 13 13 19 13z" />
+        </g>
+      );
     case "search":
       return (
         <g>
