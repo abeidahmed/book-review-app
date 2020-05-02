@@ -15,6 +15,7 @@ export const GET_BOOKS = gql`
       creator {
         _id
         email
+        fullName
       }
     }
   }

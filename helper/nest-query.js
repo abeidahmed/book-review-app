@@ -40,6 +40,7 @@ const findUser = async id => {
     return {
       ...user._doc,
       books: () => findBooks(user.books),
+      fullName: user.fullName,
       createdAt: () => user.createdAt.toISOString(),
       updatedAt: () => user.updatedAt.toISOString()
     };
