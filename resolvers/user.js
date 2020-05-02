@@ -11,7 +11,12 @@ const resolvers = {
       try {
         const users = await User.find();
         return users.map(user => {
-          return { ...user._doc, books: () => findBooks(user.books) };
+          return {
+            ...user._doc,
+            books: () => findBooks(user.books),
+            createdAt: book.createdAt.toISOString(),
+            updatedAt: book.updatedAt.toISOString()
+          };
         });
       } catch (err) {
         throw err;
