@@ -3,59 +3,62 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  firstName: {
-    type: String,
-    trim: true,
-    maxlength: 255,
-    set: capitalize
-  },
-  lastName: {
-    type: String,
-    trim: true,
-    maxlength: 255,
-    set: capitalize
-  },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
-    maxlength: 255
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-    minlength: 6
-  },
-  role: {
-    type: String,
-    enum: ["Admin", "User"],
-    required: true,
-    default: "User"
-  },
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true
+const userSchema = new Schema(
+  {
+    firstName: {
+      type: String,
+      trim: true,
+      maxlength: 255,
+      set: capitalize
+    },
+    lastName: {
+      type: String,
+      trim: true,
+      maxlength: 255,
+      set: capitalize
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+      maxlength: 255
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 6
+    },
+    role: {
+      type: String,
+      enum: ["Admin", "User"],
+      required: true,
+      default: "User"
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true
+        }
       }
-    }
-  ],
-  categories: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Category"
-    }
-  ],
-  books: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Book"
-    }
-  ]
-});
+    ],
+    categories: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Category"
+      }
+    ],
+    books: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Book"
+      }
+    ]
+  },
+  { timestamps: true }
+);
 
 // capitalize string before storing in the db
 function capitalize(val) {
