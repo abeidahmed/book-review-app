@@ -6,7 +6,7 @@ const DesktopLink = () => {
     <div className="hidden sm:block sm:ml-6">
       <div className="flex">
         <Link
-          to="/admin"
+          to="/admin/dashboard"
           className="px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-700 hover:text-gray-900 transition duration-150 ease-in-out"
         >
           Dashboard
