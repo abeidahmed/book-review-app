@@ -6,7 +6,7 @@ import SidebarLink from "./components/link";
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 min-h-screen border-r bg-white flex-shrink-0">
+    <aside className="w-64 z-50 min-h-screen border-r bg-white flex-shrink-0">
       <div className="h-16 flex items-center justify-between px-3">
         <Link to="/">
           <img className="h-8 w-auto" src={LogoFull} alt="logo" />
