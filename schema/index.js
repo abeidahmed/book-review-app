@@ -40,6 +40,8 @@ const typeDefs = gql`
     author: String!
     category: Category!
     creator: User!
+    createdAt: String
+    updateAt: String
   }
 
   input BookInput {
