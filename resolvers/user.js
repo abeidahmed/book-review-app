@@ -14,8 +14,8 @@ const resolvers = {
           return {
             ...user._doc,
             books: () => findBooks(user.books),
-            createdAt: book.createdAt.toISOString(),
-            updatedAt: book.updatedAt.toISOString()
+            createdAt: user.createdAt.toISOString(),
+            updatedAt: user.updatedAt.toISOString()
           };
         });
       } catch (err) {

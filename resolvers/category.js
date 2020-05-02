@@ -7,8 +7,9 @@ const categoryMeta = category => {
     ...category._doc,
     creator: () => findUser(category.creator),
     books: () => findBooks(category.books),
-    createdAt: book.createdAt.toISOString(),
-    updatedAt: book.updatedAt.toISOString()
+    bookCount: category.books.length,
+    createdAt: category.createdAt.toISOString(),
+    updatedAt: category.updatedAt.toISOString()
   };
 };
 
