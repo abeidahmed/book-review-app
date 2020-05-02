@@ -55,7 +55,9 @@ const BookList = () => {
               {data.books.map(book => (
                 <tr key={book._id}>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <p className="text-sm leading-5 text-gray-900">{book.title}</p>
+                    <p className="text-sm max-w-xs truncate leading-5 text-gray-900">
+                      {book.title}
+                    </p>
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                     {book.author}
