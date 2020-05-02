@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Avatar } from "components/avatar";
 import { Dropdown } from "components/dropdown";
 import Icon from "components/icon";
+import ProfileLink from "./components/profile-link";
 
 const Header = () => {
   const [profileActive, setProfileActive] = useState(false);
@@ -14,23 +15,7 @@ const Header = () => {
       <div className="relative ml-auto">
         <Avatar toggleDropdown={setProfileActive} />
         <Dropdown isActive={profileActive} onOutsideClick={() => setProfileActive(false)}>
-          <div className="py-1 rounded-md bg-white shadow-xs">
-            <a
-              href="/"
-              className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-            >
-              Your Profile
-            </a>
-            <a
-              href="/"
-              className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
-            >
-              Settings
-            </a>
-            <button className="w-full text-left block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-              Sign out
-            </button>
-          </div>
+          <ProfileLink />
         </Dropdown>
       </div>
     </header>
