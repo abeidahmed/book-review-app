@@ -4,14 +4,21 @@ import Icon from "components/icon";
 import LogoFull from "assets/logo/logo-full.svg";
 import SidebarLink from "./components/link";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarActive, setSidebarActive }) => {
   return (
-    <aside className="w-64 z-50 min-h-screen border-r border-gray-200 bg-white flex-shrink-0">
+    <aside
+      className={`transform ${
+        sidebarActive ? "translate-x-0" : "-translate-x-full"
+      } lg:translate-x-0 absolute lg:static w-64 z-50 min-h-screen border-r border-gray-200 bg-white flex-shrink-0 transition duration-150 ease-in-out`}
+    >
       <div className="h-16 flex items-center justify-between px-3">
         <Link to="/">
           <img className="h-8 w-auto" src={LogoFull} alt="logo" />
         </Link>
-        <button className="lg:hidden p-1 -mr-2 rounded-md text-gray-700 focus:outline-none focus:text-gray-900 focus:bg-gray-100 transition duration-150 ease-in-out">
+        <button
+          onClick={() => setSidebarActive(false)}
+          className="lg:hidden p-1 -mr-2 rounded-md text-gray-700 focus:outline-none focus:text-gray-900 focus:bg-gray-100 transition duration-150 ease-in-out"
+        >
           <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
