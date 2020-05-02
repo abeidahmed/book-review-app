@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { GET_BOOKS } from "api/book/book-list";
 
 export default function Home() {
   const { data, loading, error } = useQuery(GET_BOOKS);
@@ -19,13 +19,3 @@ export default function Home() {
     </div>
   );
 }
-
-const GET_BOOKS = gql`
-  query bookList {
-    books {
-      title
-      description
-      author
-    }
-  }
-`;

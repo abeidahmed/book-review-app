@@ -1,8 +1,14 @@
 import React from "react";
+import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
+import { GET_BOOKS } from "api/book/book-list";
 import Icon from "components/icon";
 
 const BookList = () => {
+  const { data, loading, error } = useQuery(GET_BOOKS);
+
+  if (loading || error) return <p>Loading...</p>;
+
   return (
     <AdminLayout>
       <div className="lg:flex lg:items-center lg:justify-between">
@@ -45,27 +51,29 @@ const BookList = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <tr>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <p className="text-sm leading-5 text-gray-900">Snow white and the seven dwarfs</p>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  Charles Dickens
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  25th July, 2016
-                </td>
-                <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                  <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                    Edit
-                  </a>
-                </td>
-              </tr>
+              {data.books.map(book => (
+                <tr key={book._id}>
+                  <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <p className="text-sm leading-5 text-gray-900">{book.title}</p>
+                  </td>
+                  <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                    {book.author}
+                  </td>
+                  <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      {book.category.title}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                    {book.createdAt}
+                  </td>
+                  <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                      Edit
+                    </a>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
