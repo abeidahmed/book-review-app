@@ -19,38 +19,47 @@ const schema = makeExecutableSchema({
 const server = new ApolloServer({
   schema,
   context: async ({ req }) => {
-    const header = req.headers.authorization || "";
+    const header = req.headers.authorization;
 
-    if (header !== "") {
-      const token = header.replace("Bearer ", "");
-      const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
-
-      const user = await User.findOne({ _id: decoded._id });
-      if (user) {
-        if (user.role === "User") {
-          return {
-            isAdmin: false,
-            isAuth: true,
-            userId: decoded._id,
-            token
-          };
-        } else if (user.role === "Admin") {
-          return {
-            isAdmin: true,
-            isAuth: true,
-            userId: decoded._id,
-            token
-          };
-        }
-      }
+    if (!header) {
+      return {
+        isAdmin: false,
+        isAuth: false,
+        userId: null,
+        token: null
+      };
     }
 
-    return {
-      isAdmin: false,
-      isAuth: false,
-      userId: null,
-      token: null
-    };
+    const token = header.replace("Bearer ", "");
+
+    if (!token) {
+      return {
+        isAdmin: false,
+        isAuth: false,
+        userId: null,
+        token: null
+      };
+    }
+
+    const decoded = jwt.verify(token, process.env.AUTH_SECRET_KEY);
+    const user = await User.findOne({ _id: decoded._id });
+    if (user) {
+      if (user.role === "User") {
+        return {
+          isAdmin: false,
+          isAuth: true,
+          userId: decoded._id,
+          token
+        };
+      } else if (user.role === "Admin") {
+        return {
+          isAdmin: true,
+          isAuth: true,
+          userId: decoded._id,
+          token
+        };
+      }
+    }
   }
 });
 
@@ -66,7 +75,7 @@ mongoose
   })
   .then(() => {
     server.listen().then(({ url }) => {
-      console.log(`🚀 Server ready at ${url}`);
+      console.log(`Server is ready at ${url}`);
     });
   })
   .catch(err => console.log(err));
