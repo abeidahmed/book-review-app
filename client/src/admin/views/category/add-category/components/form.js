@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({ title, setTitle, description, setDescription }) => {
   return (
     <div className="mt-5 md:flex md:mt-8 md:-ml-6">
       <div className="max-w-md md:w-1/3 xl:max-w-md md:px-6">
@@ -17,6 +17,8 @@ const Form = () => {
           <input
             id="add_category_title"
             type="text"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
             placeholder="Horror"
             className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
           />
@@ -29,7 +31,9 @@ const Form = () => {
             style={{ minHeight: 150 }}
             id="add_category_description"
             type="text"
-            placeholder="Horror"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            placeholder="Write a short description about the category"
             className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
           />
         </div>
