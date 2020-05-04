@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
 import { GET_CATEGORIES } from "api/category/category-list";
 import Icon from "components/icon";
+import { ModalProvider } from "App";
 import { Spinner } from "components/spinner";
 
 const CategoryList = () => {
   const { data, loading, error } = useQuery(GET_CATEGORIES);
+
+  const { dispatch } = useContext(ModalProvider);
 
   if (loading || error) return <Spinner />;
 
@@ -73,7 +76,18 @@ const CategoryList = () => {
                       Edit
                     </a>
                     <div className="rounded-full p-px bg-gray-400 mx-1"></div>
-                    <button className="font-medium text-red-600 hover:text-red-900">Delete</button>
+                    <button
+                      onClick={() =>
+                        dispatch({
+                          type: "OPEN_MODAL",
+                          modalType: "DELETE_CATEGORY",
+                          modalProps: category._id
+                        })
+                      }
+                      className="font-medium text-red-600 hover:text-red-900"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

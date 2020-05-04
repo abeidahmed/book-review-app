@@ -6,6 +6,10 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans]
+      },
+      zIndex: {
+        "100": "100",
+        ...defaultTheme.zIndex
       }
     }
   },
