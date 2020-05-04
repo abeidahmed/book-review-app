@@ -25,8 +25,7 @@ const server = new ApolloServer({
       return {
         isAdmin: false,
         isAuth: false,
-        userId: null,
-        token: null
+        userId: null
       };
     }
 
@@ -36,8 +35,7 @@ const server = new ApolloServer({
       return {
         isAdmin: false,
         isAuth: false,
-        userId: null,
-        token: null
+        userId: null
       };
     }
 
@@ -48,15 +46,13 @@ const server = new ApolloServer({
         return {
           isAdmin: false,
           isAuth: true,
-          userId: decoded._id,
-          token
+          userId: decoded._id
         };
       } else if (user.role === "Admin") {
         return {
           isAdmin: true,
           isAuth: true,
-          userId: decoded._id,
-          token
+          userId: decoded._id
         };
       }
     }
