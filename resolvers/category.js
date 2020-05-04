@@ -31,7 +31,7 @@ const resolvers = {
     createCategory: async (parent, args, { isAuth, isAdmin, userId }) => {
       const { title, description } = args.categoryInput;
 
-      if (!isAdmin || isAuth) throw new Error("Unauthorized user.");
+      if (!isAdmin || !isAuth) throw new Error("Unauthorized user.");
 
       const isMatch = await Category.findOne({ title });
       if (isMatch) throw new Error("Category already exists.");

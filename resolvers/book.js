@@ -31,7 +31,7 @@ const resolvers = {
     createBook: async (parent, args, { isAdmin, isAuth, userId }) => {
       const { title, description, author, categoryId } = args.bookInput;
 
-      if (!isAdmin || isAuth) throw new Error("Unauthorized user.");
+      if (!isAdmin || !isAuth) throw new Error("Unauthorized user.");
 
       const isMatch = await Book.findOne({ title });
       if (isMatch) throw new Error("Book already exists. Create another book.");
