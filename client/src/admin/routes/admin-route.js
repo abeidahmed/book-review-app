@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import AddCategory from "admin/views/category/add-category";
 import BookList from "admin/views/book/book-list";
 import CategoryList from "admin/views/category/category-list";
 import Dashboard from "admin/views/dashboard";
@@ -18,7 +19,8 @@ const AdminRoute = () => {
         <Switch>
           <Route path="/admin/books" component={BookList} />
           <Route path="/admin/dashboard" component={Dashboard} />
-          <Route path="/admin/categories" component={CategoryList} />
+          <Route exact path="/admin/categories" component={CategoryList} />
+          <Route path="/admin/categories/add_new" component={AddCategory} />
           <Route path="/admin/users" component={UserList} />
         </Switch>
       </div>
