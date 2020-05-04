@@ -32,7 +32,7 @@ const BookList = () => {
         </div>
       </div>
 
-      <div className="mt-16 shadow overflow-hidden sm:rounded-lg">
+      <div className="my-16 shadow overflow-hidden sm:rounded-lg">
         <div className="align-middle inline-block w-full overflow-x-auto border-b border-gray-200">
           <table className="w-full">
             <thead>
