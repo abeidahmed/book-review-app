@@ -25,7 +25,7 @@ const Form = ({ signup }) => {
           value={email}
           type="email"
           onChange={e => setEmail(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+          className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
         />
       </div>
       <div className="mt-5">
@@ -37,7 +37,7 @@ const Form = ({ signup }) => {
           value={password}
           type="password"
           onChange={e => setPassword(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+          className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
         />
       </div>
       <div className="mt-6">

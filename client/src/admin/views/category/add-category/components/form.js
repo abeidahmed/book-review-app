@@ -20,7 +20,7 @@ const Form = ({ title, setTitle, description, setDescription }) => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             placeholder="Horror"
-            className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+            className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
           />
         </div>
         <div className="mt-4">
@@ -28,13 +28,13 @@ const Form = ({ title, setTitle, description, setDescription }) => {
             Description
           </label>
           <textarea
-            style={{ minHeight: 150 }}
+            rows="4"
             id="add_category_description"
             type="text"
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder="Write a short description about the category"
-            className="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+            className="form-textarea mt-1 block w-full px-3 py-2 shadow-sm"
           />
         </div>
       </div>
