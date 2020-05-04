@@ -27,7 +27,7 @@ const SidebarLink = () => {
   ];
 
   return (
-    <nav className="mt-2 px-1 text-gray-600 font-medium">
+    <nav className="mt-2 mb-4 px-1 text-gray-600 font-medium">
       {links.map(link => (
         <NavLink
           key={link.title}

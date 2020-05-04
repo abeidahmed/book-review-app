@@ -9,9 +9,9 @@ const Sidebar = ({ sidebarActive, setSidebarActive }) => {
     <aside
       className={`transform ${
         sidebarActive ? "translate-x-0" : "-translate-x-full"
-      } lg:translate-x-0 absolute lg:static w-64 z-50 min-h-screen border-r border-gray-200 bg-white flex-shrink-0 transition duration-150 ease-in-out`}
+      } lg:translate-x-0 fixed top-0 lg:sticky w-64 z-50 h-screen overflow-y-hidden flex flex-col border-r border-gray-200 bg-white flex-shrink-0 transition duration-150 ease-in-out`}
     >
-      <div className="h-16 flex items-center justify-between px-3">
+      <div className="h-16 flex flex-shrink-0 items-center justify-between px-3">
         <Link to="/">
           <img className="h-8 w-auto" src={LogoFull} alt="logo" />
         </Link>
@@ -22,7 +22,7 @@ const Sidebar = ({ sidebarActive, setSidebarActive }) => {
           <Icon icon="close" className="h-6 w-6" />
         </button>
       </div>
-      <div>
+      <div className="flex-1 overflow-y-auto">
         <SidebarLink />
       </div>
     </aside>
