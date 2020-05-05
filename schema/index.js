@@ -68,6 +68,7 @@ const typeDefs = gql`
     createCategory(categoryInput: CategoryInput): Category
     createBook(bookInput: BookInput): Book
     createUser(userInput: UserInput): AuthData
+    deleteCategory(id: ID!): ID!
     loginUser(userInput: UserInput): AuthData
   }
 `;
