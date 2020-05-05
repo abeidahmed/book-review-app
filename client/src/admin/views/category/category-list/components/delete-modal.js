@@ -1,11 +1,45 @@
 import React, { useContext } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { DELETE_CATEGORY } from "api/category/delete-category";
+import { GET_CATEGORIES } from "api/category/category-list";
 import Icon from "components/icon";
 import { ModalProvider } from "App";
+import { Spinner } from "components/spinner";
 
 const DeleteCategory = () => {
   const { modalState, dispatch } = useContext(ModalProvider);
 
+  const [deleteCategory, { loading, error }] = useMutation(DELETE_CATEGORY, {
+    update(
+      cache,
+      {
+        data: { deleteCategory }
+      }
+    ) {
+      const { categories } = cache.readQuery({ query: GET_CATEGORIES });
+      cache.writeQuery({
+        query: GET_CATEGORIES,
+        data: { categories: categories.filter(category => category._id !== deleteCategory) }
+      });
+    },
+    onCompleted() {
+      dispatch({
+        type: "CLOSE_MODAL"
+      });
+    }
+  });
+
+  const handleDelete = () => {
+    deleteCategory({
+      variables: {
+        id: modalState.modalProps
+      }
+    });
+  };
+
   const isActive = modalState.modalType === "DELETE_CATEGORY" ? true : false;
+
+  if (error) return <Spinner />;
 
   return (
     <div
@@ -36,7 +70,9 @@ const DeleteCategory = () => {
         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
             <button
+              onClick={handleDelete}
               type="button"
+              disabled={loading}
               className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
             >
               Delete
