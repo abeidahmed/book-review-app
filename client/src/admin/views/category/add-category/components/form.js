@@ -1,6 +1,7 @@
 import React from "react";
+import { InputField } from "components/field";
 
-const Form = ({ title, setTitle, description, setDescription }) => {
+const Form = ({ error, title, setTitle, description, setDescription }) => {
   return (
     <div className="mt-5 md:flex md:mt-8 md:-ml-6">
       <div className="max-w-md md:w-1/3 xl:max-w-md md:px-6">
@@ -11,16 +12,14 @@ const Form = ({ title, setTitle, description, setDescription }) => {
       </div>
       <div className="shadow mt-5 bg-white rounded-md p-4 md:mt-0 md:w-2/3 md:p-6">
         <div>
-          <label htmlFor="add_category_title" className="text-sm text-gray-700 font-medium">
-            Title
-          </label>
-          <input
+          <InputField
             id="add_category_title"
+            label="Title"
+            error={error}
+            errorType="Category"
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            placeholder="Horror"
-            className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
           />
         </div>
         <div className="mt-4">

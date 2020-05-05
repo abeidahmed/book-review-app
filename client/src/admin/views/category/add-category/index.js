@@ -11,6 +11,7 @@ const AddCategory = () => {
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
 
   const [createCategory] = useMutation(CREATE_CATEGORY, {
     update(
@@ -30,13 +31,17 @@ const AddCategory = () => {
     }
   });
 
-  const handleSubmit = () => {
-    createCategory({
-      variables: {
-        title,
-        description
-      }
-    });
+  const handleSubmit = async () => {
+    try {
+      await createCategory({
+        variables: {
+          title,
+          description
+        }
+      });
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -55,6 +60,7 @@ const AddCategory = () => {
         </div>
       </div>
       <Form
+        error={error}
         title={title}
         setTitle={setTitle}
         description={description}
