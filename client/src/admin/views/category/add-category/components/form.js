@@ -18,6 +18,7 @@ const Form = ({ error, title, setTitle, description, setDescription }) => {
             error={error}
             errorType="Category"
             type="text"
+            placeholder="Eg: Thriller"
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
