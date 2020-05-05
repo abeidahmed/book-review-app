@@ -37,7 +37,7 @@ const resolvers = {
         const isMatch = await User.findOne({ email });
         if (isMatch) throw new Error("Email address is already registered.");
 
-        if (password.length < 6) throw new Error("Too short. Min length is 6.");
+        if (password.length < 6) throw new Error("Password is too short. Min length is 6.");
 
         const user = new User({
           email,
