@@ -1,4 +1,5 @@
 import React from "react";
+import Icon from "components/icon";
 import { InputField } from "components/field";
 
 const Form = () => {
@@ -46,6 +47,20 @@ const Form = () => {
             placeholder="Write a short description about the book"
             className="form-textarea mt-1 block w-full px-3 py-2 shadow-sm"
           />
+        </div>
+        <div className="mt-4 border-2 border-dashed rounded-md">
+          <label htmlFor="add_book_file_upload" className="cursor-pointer">
+            <p className="py-6 px-3 flex flex-col items-center justify-center text-center">
+              <Icon icon="add-image" className="w-10 h-10 text-gray-400" />
+              <span className="mt-1 text-sm text-gray-500">
+                <span className="block font-medium text-gray-600">
+                  <span className="text-indigo-600">Upload a file</span> or drag and drop
+                </span>
+                <span className="mt-1 block">JPG, JPEG upto 1MB</span>
+              </span>
+            </p>
+          </label>
+          <input id="add_book_file_upload" type="file" className="hidden" />
         </div>
       </div>
     </div>
