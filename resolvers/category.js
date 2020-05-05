@@ -36,6 +36,8 @@ const resolvers = {
       const isMatch = await Category.findOne({ title });
       if (isMatch) throw new Error("Category already exists.");
 
+      if (title.length > 255) throw new Error("Category title exceeds 255 characters.");
+
       try {
         const category = new Category({
           title,
