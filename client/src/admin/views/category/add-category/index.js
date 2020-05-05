@@ -13,7 +13,7 @@ const AddCategory = () => {
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
 
-  const [createCategory] = useMutation(CREATE_CATEGORY, {
+  const [createCategory, { loading }] = useMutation(CREATE_CATEGORY, {
     update(
       cache,
       {
@@ -51,6 +51,7 @@ const AddCategory = () => {
           <span className="shadow-sm rounded-md">
             <button
               onClick={handleSubmit}
+              disabled={loading}
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
             >
               <Icon icon="plus" className="-ml-1 mr-2 h-5 w-5" />
