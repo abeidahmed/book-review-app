@@ -28,13 +28,17 @@ const resolvers = {
   },
 
   Mutation: {
-    createBook: async (parent, args, { isAdmin, isAuth, userId }) => {
+    createBook: async (parent, args, { isAdmin, userId }) => {
       const { title, description, author, categoryId } = args.bookInput;
 
       if (!isAdmin) throw new Error("Unauthorized user.");
 
       const isMatch = await Book.findOne({ title });
-      if (isMatch) throw new Error("Book already exists. Create another book.");
+      if (isMatch) throw new Error("Book already exists.");
+
+      if (!title) throw new Error("Book title cannot be blank.");
+
+      if (title.length > 255) throw new Error("Book title exceeds 255 characters.");
 
       try {
         const book = new Book({

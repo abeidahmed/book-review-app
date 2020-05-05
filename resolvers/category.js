@@ -28,13 +28,15 @@ const resolvers = {
   },
 
   Mutation: {
-    createCategory: async (parent, args, { isAuth, isAdmin, userId }) => {
+    createCategory: async (parent, args, { isAdmin, userId }) => {
       const { title, description } = args.categoryInput;
 
       if (!isAdmin) throw new Error("Unauthorized user.");
 
       const isMatch = await Category.findOne({ title });
       if (isMatch) throw new Error("Category already exists.");
+
+      if (!title) throw new Error("Category title cannot be blank.");
 
       if (title.length > 255) throw new Error("Category title exceeds 255 characters.");
 
@@ -61,7 +63,7 @@ const resolvers = {
         throw err;
       }
     },
-    deleteCategory: async (parent, { id }, { isAdmin, isAuth }) => {
+    deleteCategory: async (parent, { id }, { isAdmin }) => {
       if (!isAdmin) throw new Error("Unauthorized user");
       try {
         await Category.deleteOne({ _id: id });

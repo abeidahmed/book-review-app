@@ -5,7 +5,7 @@ const { findBooks } = require("../helper/nest-query");
 
 const resolvers = {
   Query: {
-    users: async (parent, args, { isAdmin, isAuth }) => {
+    users: async (parent, args, { isAdmin }) => {
       if (!isAdmin) throw new Error("Unauthorized user.");
 
       try {
@@ -29,6 +29,10 @@ const resolvers = {
     createUser: async (parent, args) => {
       try {
         const { email, password } = args.userInput;
+
+        if (!email) throw new Error("Email address is required.");
+
+        if (!password) throw new Error("Password is required.");
 
         if (!validator.isEmail(email)) {
           throw new Error("Invalid email address.");
