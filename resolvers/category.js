@@ -74,7 +74,7 @@ const resolvers = {
         const categoryIndex = user.categories.indexOf(category._id);
         if (category.index !== -1) {
           user.categories.splice(categoryIndex, 1);
-          user.save();
+          await user.save();
         }
 
         // Lastly we want to delete the category that was intended to deleted.
