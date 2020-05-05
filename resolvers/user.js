@@ -60,10 +60,10 @@ const resolvers = {
       const { email, password } = args.userInput;
       try {
         const user = await User.findOne({ email });
-        if (!user) throw new Error("Invalid credentials");
+        if (!user) throw new Error("Invalid credentials.");
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) throw new Error("Invalid credentials");
+        if (!isMatch) throw new Error("Invalid credentials.");
 
         /**
          * Generate jwt token. Function listed in user model.
