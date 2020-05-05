@@ -66,7 +66,20 @@ const resolvers = {
     deleteCategory: async (parent, { id }, { isAdmin }) => {
       if (!isAdmin) throw new Error("Unauthorized user");
       try {
+        const category = await Category.findById(id);
+        if (!category) throw new Error("Category does not exist.");
+
+        // Delete the category from the user's categories field as well.
+        const user = await User.findById(category.creator);
+        const categoryIndex = user.categories.indexOf(category._id);
+        if (category.index !== -1) {
+          user.categories.splice(categoryIndex, 1);
+          user.save();
+        }
+
+        // Lastly we want to delete the category that was intended to deleted.
         await Category.deleteOne({ _id: id });
+
         return id;
       } catch (err) {
         throw err;
