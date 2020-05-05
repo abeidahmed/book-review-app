@@ -610,10 +610,10 @@ video {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-right: 0.75rem;
   padding-bottom: 0.5rem;
@@ -623,24 +623,24 @@ video {
 }
 
 .form-input::placeholder {
-  color: #9fa6b2;
+  color: #a0aec0;
   opacity: 1;
 }
 
 .form-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
 .form-textarea {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-right: 0.75rem;
   padding-bottom: 0.5rem;
@@ -650,24 +650,24 @@ video {
 }
 
 .form-textarea::placeholder {
-  color: #9fa6b2;
+  color: #a0aec0;
   opacity: 1;
 }
 
 .form-textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
 .form-multiselect {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-right: 0.75rem;
   padding-bottom: 0.5rem;
@@ -678,22 +678,22 @@ video {
 
 .form-multiselect:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
 .form-select {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239fa6b2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3e%3cpath d='M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z'/%3e%3c/svg%3e");
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   -webkit-print-color-adjust: exact;
           color-adjust: exact;
   background-repeat: no-repeat;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   padding-top: 0.5rem;
   padding-right: 2.5rem;
   padding-bottom: 0.5rem;
@@ -705,7 +705,7 @@ video {
 }
 
 .form-select::-ms-expand {
-  color: #9fa6b2;
+  color: #a0aec0;
   border: none;
 }
 
@@ -723,8 +723,8 @@ video {
 
 .form-select:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
 .form-checkbox {
@@ -739,11 +739,11 @@ video {
   -webkit-user-select: none;
           user-select: none;
   flex-shrink: 0;
-  height: 1rem;
-  width: 1rem;
-  color: #3f83f8;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  height: 1em;
+  width: 1em;
+  color: #4299e1;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
   border-radius: 0.25rem;
 }
@@ -769,12 +769,8 @@ video {
 
 .form-checkbox:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
-}
-
-.form-checkbox:checked:focus {
-  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
 .form-radio {
@@ -790,11 +786,11 @@ video {
           user-select: none;
   flex-shrink: 0;
   border-radius: 100%;
-  height: 1rem;
-  width: 1rem;
-  color: #3f83f8;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
+  height: 1em;
+  width: 1em;
+  color: #4299e1;
+  background-color: #fff;
+  border-color: #e2e8f0;
   border-width: 1px;
 }
 
@@ -819,12 +815,26 @@ video {
 
 .form-radio:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: #a4cafe;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: #63b3ed;
 }
 
-.form-radio:checked:focus {
-  border-color: transparent;
+.form-input-error {
+  border-color: #e02424;
+}
+
+.form-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  border-color: #e02424;
+}
+
+.form-textarea-error {
+  border-color: #e02424;
+}
+
+.form-textarea-error:focus {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  border-color: #e02424;
 }
 
 @keyframes spin {
@@ -21691,6 +21701,10 @@ video {
   box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
 }
 
+.shadow-errorOutline {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+}
+
 .group:focus .group-focus\:shadow-xs {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
@@ -21773,6 +21787,10 @@ video {
 
 .group:focus .group-focus\:shadow-outline-indigo {
   box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+}
+
+.group:focus .group-focus\:shadow-errorOutline {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
 }
 
 .hover\:shadow-xs:hover {
@@ -21859,6 +21877,10 @@ video {
   box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
 }
 
+.hover\:shadow-errorOutline:hover {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+}
+
 .focus\:shadow-xs:focus {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
@@ -21941,6 +21963,10 @@ video {
 
 .focus\:shadow-outline-indigo:focus {
   box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+}
+
+.focus\:shadow-errorOutline:focus {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
 }
 
 .fill-current {
@@ -53221,6 +53247,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .sm\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .group:focus .sm\:group-focus\:shadow-xs {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -53303,6 +53333,10 @@ video {
 
   .group:focus .sm\:group-focus\:shadow-outline-indigo {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .group:focus .sm\:group-focus\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .sm\:hover\:shadow-xs:hover {
@@ -53389,6 +53423,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .sm\:hover\:shadow-errorOutline:hover {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .sm\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -53471,6 +53509,10 @@ video {
 
   .sm\:focus\:shadow-outline-indigo:focus {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .sm\:focus\:shadow-errorOutline:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .sm\:fill-current {
@@ -84752,6 +84794,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .md\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .group:focus .md\:group-focus\:shadow-xs {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -84834,6 +84880,10 @@ video {
 
   .group:focus .md\:group-focus\:shadow-outline-indigo {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .group:focus .md\:group-focus\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .md\:hover\:shadow-xs:hover {
@@ -84920,6 +84970,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .md\:hover\:shadow-errorOutline:hover {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .md\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -85002,6 +85056,10 @@ video {
 
   .md\:focus\:shadow-outline-indigo:focus {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .md\:focus\:shadow-errorOutline:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .md\:fill-current {
@@ -116283,6 +116341,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .lg\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .group:focus .lg\:group-focus\:shadow-xs {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -116365,6 +116427,10 @@ video {
 
   .group:focus .lg\:group-focus\:shadow-outline-indigo {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .group:focus .lg\:group-focus\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .lg\:hover\:shadow-xs:hover {
@@ -116451,6 +116517,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .lg\:hover\:shadow-errorOutline:hover {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .lg\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -116533,6 +116603,10 @@ video {
 
   .lg\:focus\:shadow-outline-indigo:focus {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .lg\:focus\:shadow-errorOutline:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .lg\:fill-current {
@@ -147814,6 +147888,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .xl\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .group:focus .xl\:group-focus\:shadow-xs {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -147896,6 +147974,10 @@ video {
 
   .group:focus .xl\:group-focus\:shadow-outline-indigo {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .group:focus .xl\:group-focus\:shadow-errorOutline {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .xl\:hover\:shadow-xs:hover {
@@ -147982,6 +148064,10 @@ video {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
   }
 
+  .xl\:hover\:shadow-errorOutline:hover {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
+  }
+
   .xl\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -148064,6 +148150,10 @@ video {
 
   .xl\:focus\:shadow-outline-indigo:focus {
     box-shadow: 0 0 0 3px rgba(180, 198, 252, 0.45);
+  }
+
+  .xl\:focus\:shadow-errorOutline:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.5);
   }
 
   .xl\:fill-current {
