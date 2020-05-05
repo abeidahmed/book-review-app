@@ -1,18 +1,24 @@
 import React, { useState } from "react";
+import { fieldValidation } from "utils/field-validation";
 import Icon from "components/icon";
 
 const Form = ({ login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    login({
-      variables: {
-        email: email,
-        password: password
-      }
-    });
+    try {
+      await login({
+        variables: {
+          email: email,
+          password: password
+        }
+      });
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -41,6 +47,9 @@ const Form = ({ login }) => {
       </div>
 
       <div className="mt-6 flex items-center justify-between">
+        {fieldValidation(error, "Invalid") && (
+          <p className="text-sm font-medium text-red-700">{fieldValidation(error, "Invalid")}</p>
+        )}
         <div className="ml-auto text-sm leading-5">
           <a
             href="/"
