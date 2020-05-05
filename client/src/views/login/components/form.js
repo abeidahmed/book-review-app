@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fieldValidation } from "utils/field-validation";
 import Icon from "components/icon";
 
-const Form = ({ login }) => {
+const Form = ({ loading, login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -63,6 +63,7 @@ const Form = ({ login }) => {
       <div className="mt-6">
         <button
           type="submit"
+          disabled={loading}
           className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
         >
           <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -71,7 +72,7 @@ const Form = ({ login }) => {
               className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
             />
           </span>
-          Sign in
+          {loading ? "Signing in..." : "Sign in"}
         </button>
       </div>
     </form>

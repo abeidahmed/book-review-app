@@ -8,7 +8,7 @@ import Header from "./components/header";
 export default function Register() {
   const client = useApolloClient();
   const history = useHistory();
-  const [signup] = useMutation(REGISTER_USER, {
+  const [signup, { loading }] = useMutation(REGISTER_USER, {
     onCompleted(signup) {
       localStorage.setItem("token", signup.createUser.token);
       client.writeData({ data: { isLoggedIn: true } });
@@ -21,7 +21,7 @@ export default function Register() {
       <div className="max-w-md w-full">
         <Header />
         <div className="mt-8 p-10 bg-white rounded-md shadow">
-          <Form signup={signup} />
+          <Form signup={signup} loading={loading} />
         </div>
       </div>
     </div>
