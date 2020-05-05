@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+
+import AddBook from "admin/views/book/add-book";
 import AddCategory from "admin/views/category/add-category";
 import BookList from "admin/views/book/book-list";
 import CategoryList from "admin/views/category/category-list";
@@ -17,7 +19,8 @@ const AdminRoute = () => {
       <div className="w-full flex flex-col">
         <Header setSidebarActive={setSidebarActive} />
         <Switch>
-          <Route path="/admin/books" component={BookList} />
+          <Route exact path="/admin/books" component={BookList} />
+          <Route path="/admin/books/add_new" component={AddBook} />
           <Route path="/admin/dashboard" component={Dashboard} />
           <Route exact path="/admin/categories" component={CategoryList} />
           <Route path="/admin/categories/add_new" component={AddCategory} />

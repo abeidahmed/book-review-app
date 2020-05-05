@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import { useQuery } from "@apollo/react-hooks";
 import { AdminLayout } from "components/layout";
@@ -21,13 +22,13 @@ const BookList = () => {
         </div>
         <div className="mt-5 flex lg:mt-0 lg:ml-4">
           <span className="shadow-sm rounded-md">
-            <button
-              type="button"
+            <Link
+              to="/admin/books/add_new"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
             >
               <Icon icon="plus" className="-ml-1 mr-2 h-5 w-5" />
               Add book
-            </button>
+            </Link>
           </span>
         </div>
       </div>
