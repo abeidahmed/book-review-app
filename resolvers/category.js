@@ -31,7 +31,7 @@ const resolvers = {
     createCategory: async (parent, args, { isAuth, isAdmin, userId }) => {
       const { title, description } = args.categoryInput;
 
-      if (!isAdmin || !isAuth) throw new Error("Unauthorized user.");
+      if (!isAdmin) throw new Error("Unauthorized user.");
 
       const isMatch = await Category.findOne({ title });
       if (isMatch) throw new Error("Category already exists.");
@@ -55,6 +55,15 @@ const resolvers = {
         await user.save();
 
         return categoryMeta(category);
+      } catch (err) {
+        throw err;
+      }
+    },
+    deleteCategory: async (parent, { id }, { isAdmin, isAuth }) => {
+      if (!isAdmin) throw new Error("Unauthorized user");
+      try {
+        await Category.deleteOne({ _id: id });
+        return id;
       } catch (err) {
         throw err;
       }

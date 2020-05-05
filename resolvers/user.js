@@ -6,7 +6,7 @@ const { findBooks } = require("../helper/nest-query");
 const resolvers = {
   Query: {
     users: async (parent, args, { isAdmin, isAuth }) => {
-      if (!isAdmin || !isAuth) throw new Error("Unauthorized user.");
+      if (!isAdmin) throw new Error("Unauthorized user.");
 
       try {
         const users = await User.find();
