@@ -72,7 +72,7 @@ const resolvers = {
         // Delete the category from the user's categories field as well.
         const user = await User.findById(category.creator);
         const categoryIndex = user.categories.indexOf(category._id);
-        if (category.index !== -1) {
+        if (categoryIndex !== -1) {
           user.categories.splice(categoryIndex, 1);
           await user.save();
         }
