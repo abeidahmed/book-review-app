@@ -1,43 +1,47 @@
 import React, { useState } from "react";
+import { InputField } from "components/field";
 
 const Form = ({ signup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    signup({
-      variables: {
-        email: email,
-        password: password
-      }
-    });
+    try {
+      await signup({
+        variables: {
+          email: email,
+          password: password
+        }
+      });
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="signup_email" className="text-sm text-gray-700 font-medium">
-          Email address
-        </label>
-        <input
+        <InputField
           id="signup_email"
+          label="Email"
+          error={error}
+          errorType="Email"
           value={email}
           type="email"
           onChange={e => setEmail(e.target.value)}
-          className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
         />
       </div>
       <div className="mt-5">
-        <label htmlFor="signup_password" className="text-sm text-gray-700 font-medium">
-          Password
-        </label>
-        <input
+        <InputField
           id="signup_password"
+          error={error}
+          errorType="Password"
+          label="Password"
           value={password}
           type="password"
           onChange={e => setPassword(e.target.value)}
-          className="form-input mt-1 block w-full px-3 py-2 shadow-sm "
         />
       </div>
       <div className="mt-6">
