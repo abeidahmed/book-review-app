@@ -14,6 +14,7 @@ export const GET_CATEGORIES = gql`
         title
         description
         authors {
+          _id
           name
         }
         createdAt

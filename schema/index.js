@@ -59,6 +59,7 @@ const typeDefs = gql`
   }
 
   type Author {
+    _id: ID!
     name: String!
     books: [Book!]!
     createdAt: String

@@ -13,7 +13,10 @@ export const CREATE_CATEGORY = gql`
         _id
         title
         description
-        author
+        authors {
+          _id
+          name
+        }
         createdAt
         updatedAt
       }

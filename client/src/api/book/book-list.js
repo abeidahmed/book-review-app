@@ -7,6 +7,7 @@ export const GET_BOOKS = gql`
       title
       description
       authors {
+        _id
         name
       }
       createdAt
