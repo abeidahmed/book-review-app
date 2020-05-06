@@ -17,12 +17,15 @@ const Form = () => {
         </div>
         <div className="lg:flex lg:-mx-3">
           <div className="mt-4 lg:px-3 lg:w-1/2">
-            <InputField
-              id="add_book_author"
-              label="Author"
-              type="text"
-              placeholder="Eg: Paulo Coelho"
-            />
+            <label className="block text-sm text-gray-700 font-medium">
+              <span className="text-gray-700">Select author</span>
+              <select className="form-select mt-1 block w-full">
+                <option>Paulo Coelho</option>
+                <option>Abeid Ahmed</option>
+                <option>Ujin Tamang</option>
+                <option>Suhail Ahmed</option>
+              </select>
+            </label>
           </div>
           <div className="mt-4 lg:px-3 lg:w-1/2">
             <label className="block text-sm text-gray-700 font-medium">
