@@ -7,13 +7,14 @@ const mongoose = require("mongoose");
 const User = require("./models/user");
 
 const typeDefs = require("./schema");
+const authorResolver = require("./resolvers/author");
 const bookResolver = require("./resolvers/book");
 const categoryResolver = require("./resolvers/category");
 const userResolver = require("./resolvers/user");
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers: merge(userResolver, categoryResolver, bookResolver)
+  resolvers: merge(userResolver, authorResolver, categoryResolver, bookResolver)
 });
 
 const server = new ApolloServer({

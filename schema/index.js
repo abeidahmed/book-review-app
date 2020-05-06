@@ -44,7 +44,7 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     description: String
-    author: String!
+    authors: [Author!]!
     category: Category!
     creator: User!
     createdAt: String
@@ -55,18 +55,31 @@ const typeDefs = gql`
     title: String!
     description: String
     categoryId: ID!
-    author: String!
+    authorIds: [ID!]!
+  }
+
+  type Author {
+    name: String!
+    books: [Book!]!
+    createdAt: String
+    updatedAt: String
+  }
+
+  input AuthorInput {
+    name: String!
   }
 
   type Query {
     users: [User!]!
     categories: [Category!]!
     books: [Book!]!
+    author: [Author!]!
   }
 
   type Mutation {
-    createCategory(categoryInput: CategoryInput): Category
+    createAuthor(authorInput: AuthorInput): Author!
     createBook(bookInput: BookInput): Book
+    createCategory(categoryInput: CategoryInput): Category
     createUser(userInput: UserInput): AuthData
     deleteCategory(id: ID!): ID!
     loginUser(userInput: UserInput): AuthData

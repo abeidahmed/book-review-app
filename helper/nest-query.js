@@ -1,6 +1,23 @@
+const Author = require("../models/author");
 const Book = require("../models/book");
 const Category = require("../models/category");
 const User = require("../models/user");
+
+const findAuthors = async ids => {
+  try {
+    const authors = await Author.find({ _id: { $in: ids } });
+    return authors.map(author => {
+      return {
+        ...author._doc,
+        books: () => findBooks(author.books),
+        createdAt: () => author.createdAt.toISOString(),
+        updatedAt: () => author.updatedAt.toISOString()
+      };
+    });
+  } catch (err) {
+    throw err;
+  }
+};
 
 const findBooks = async ids => {
   try {
@@ -10,6 +27,7 @@ const findBooks = async ids => {
         ...book._doc,
         category: () => findCategory(book.category),
         creator: () => findUser(book.creator),
+        authors: () => findAuthors(book.authors),
         createdAt: () => book.createdAt.toISOString(),
         updatedAt: () => book.updatedAt.toISOString()
       };
@@ -50,6 +68,7 @@ const findUser = async id => {
 };
 
 module.exports = {
+  findAuthors,
   findBooks,
   findCategory,
   findUser

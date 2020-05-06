@@ -1,13 +1,15 @@
+const Author = require("../models/author");
 const Book = require("../models/book");
 const Category = require("../models/category");
 const User = require("../models/user");
-const { findCategory, findUser } = require("../helper/nest-query");
+const { findAuthors, findCategory, findUser } = require("../helper/nest-query");
 
 const bookMeta = book => {
   return {
     ...book._doc,
     creator: () => findUser(book.creator),
     category: () => findCategory(book.category),
+    authors: () => findAuthors(book.authors),
     createdAt: book.createdAt.toISOString(),
     updatedAt: book.updatedAt.toISOString()
   };
@@ -29,7 +31,7 @@ const resolvers = {
 
   Mutation: {
     createBook: async (parent, args, { isAdmin, userId }) => {
-      const { title, description, author, categoryId } = args.bookInput;
+      const { title, description, authorIds, categoryId } = args.bookInput;
 
       if (!isAdmin) throw new Error("Unauthorized user.");
 
@@ -44,12 +46,18 @@ const resolvers = {
         const book = new Book({
           title,
           description,
-          author,
+          authors: authorIds,
           category: categoryId,
           creator: userId
         });
 
         await book.save();
+
+        const authors = await Author.find({ _id: { $in: authorIds } });
+        authors.map(async author => {
+          author.books.push(book);
+          await author.save();
+        });
 
         /**
          * Find the category that the book is listed to and push the book

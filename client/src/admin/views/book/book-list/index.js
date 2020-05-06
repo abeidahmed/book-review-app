@@ -12,6 +12,14 @@ const BookList = () => {
 
   if (loading || error) return <Spinner />;
 
+  const bookAuthors = authors => {
+    let authorName = [];
+    for (let author of authors) {
+      authorName.push(author.name);
+    }
+    return authorName.join(", ");
+  };
+
   return (
     <AdminLayout>
       <div className="sm:flex sm:items-center sm:justify-between">
@@ -62,7 +70,7 @@ const BookList = () => {
                     </p>
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                    {book.author}
+                    <span className="truncate max-w-xs">{bookAuthors(book.authors)}</span>
                   </td>
                   <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">

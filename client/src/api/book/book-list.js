@@ -6,7 +6,9 @@ export const GET_BOOKS = gql`
       _id
       title
       description
-      author
+      authors {
+        name
+      }
       createdAt
       category {
         _id

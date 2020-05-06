@@ -15,7 +15,9 @@ export const USER_LIST = gql`
         _id
         title
         description
-        author
+        authors {
+          name
+        }
         category {
           _id
           title
