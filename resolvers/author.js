@@ -6,13 +6,13 @@ const authorMeta = author => {
     ...author._doc,
     books: () => findBooks(author.books),
     createdAt: author.createdAt.toISOString(),
-    updatedAt: author.createdAt.toISOString()
+    updatedAt: author.updatedAt.toISOString()
   };
 };
 
 const resolvers = {
   Query: {
-    author: async () => {
+    authors: async () => {
       try {
         const authors = await Author.find();
         return authors.map(author => {

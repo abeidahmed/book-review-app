@@ -74,7 +74,7 @@ const typeDefs = gql`
     users: [User!]!
     categories: [Category!]!
     books: [Book!]!
-    author: [Author!]!
+    authors: [Author!]!
   }
 
   type Mutation {
