@@ -1,71 +1,146 @@
-import React from "react";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import ButtonToggle from "./button-toggle";
+import { Checkbox, UploadFile } from "components/field";
+import { GET_AUTHORS } from "api/author/author-list";
+import { GET_CATEGORIES } from "api/category/category-list";
 import Icon from "components/icon";
-import { InputField } from "components/field";
+import { SearchField } from "components/search";
+import { Spinner } from "components/spinner";
 
-const Form = () => {
+const Form = ({
+  title,
+  setTitle,
+  description,
+  setDescription,
+  authorIds,
+  setAuthorIds,
+  categoryId,
+  setCategoryId
+}) => {
+  const { data: catList, loading: catLoading, error: catError } = useQuery(GET_CATEGORIES);
+  const { data: authorList, loading: authorLoading, error: authorError } = useQuery(GET_AUTHORS);
+
+  const [authorActive, setAuthorActive] = useState(true);
+  const [categoryActive, setCategoryActive] = useState(true);
+  const [uploadImageActive, setUploadImageActive] = useState(true);
+
+  const selectAuthor = (e, id) => {
+    let checkArray = [...authorIds];
+    if (e.target.checked) {
+      checkArray = [...checkArray, id];
+    } else {
+      const index = checkArray.indexOf(id);
+      checkArray.splice(index, 1);
+    }
+    setAuthorIds(checkArray);
+  };
+
   return (
-    <div className="mt-5 md:flex md:mt-8 md:-ml-6">
-      <div className="max-w-md md:w-1/3 xl:max-w-md md:px-6">
-        <h2 className="text-gray-900 text-lg font-semibold">Book</h2>
-        <p className="mt-2 text-sm text-gray-500 lg:text-base">
-          Add a book that people would like to read.
-        </p>
-      </div>
-      <div className="shadow mt-5 bg-white rounded-md p-4 md:mt-0 md:w-2/3 md:p-6">
+    <div className="flex bg-white text-gray-900">
+      <div className="mt-3 px-3 max-w-xl mx-auto w-full">
         <div>
-          <InputField id="add_book_title" label="Title" type="text" placeholder="Eg: Alchemist" />
-        </div>
-        <div className="lg:flex lg:-mx-3">
-          <div className="mt-4 lg:px-3 lg:w-1/2">
-            <label className="block text-sm text-gray-700 font-medium">
-              <span className="text-gray-700">Select author</span>
-              <select className="form-select mt-1 block w-full">
-                <option>Paulo Coelho</option>
-                <option>Abeid Ahmed</option>
-                <option>Ujin Tamang</option>
-                <option>Suhail Ahmed</option>
-              </select>
-            </label>
-          </div>
-          <div className="mt-4 lg:px-3 lg:w-1/2">
-            <label className="block text-sm text-gray-700 font-medium">
-              <span className="text-gray-700">Book category</span>
-              <select className="form-select mt-1 block w-full">
-                <option>Horror</option>
-                <option>Thriller</option>
-                <option>Science</option>
-                <option>Fiction</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div className="mt-4">
-          <label htmlFor="add_book_description" className="text-sm text-gray-700 font-medium">
-            Description
-          </label>
-          <textarea
-            rows="4"
-            id="add_book_description"
+          <input
             type="text"
-            placeholder="Write a short description about the book"
-            className="form-textarea mt-1 block w-full px-3 py-2 shadow-sm"
+            placeholder="Add a title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            className="block w-full py-3 px-3 text-xl font-medium border border-transparent focus:outline-none focus:border-gray-300"
           />
         </div>
-        <div className="mt-4 border-2 border-dashed rounded-md">
-          <label htmlFor="add_book_file_upload" className="cursor-pointer">
-            <p className="py-6 px-3 flex flex-col items-center justify-center text-center">
-              <Icon icon="add-image" className="w-10 h-10 text-gray-400" />
-              <span className="mt-1 text-sm text-gray-500">
-                <span className="block font-medium text-gray-600">
-                  <span className="text-indigo-600">Upload a file</span> or drag and drop
-                </span>
-                <span className="mt-1 block">JPG, JPEG upto 1MB</span>
-              </span>
-            </p>
-          </label>
-          <input id="add_book_file_upload" type="file" className="hidden" />
+        <div className="mt-2">
+          <textarea
+            rows="20"
+            placeholder="Add a description"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            className="block w-full py-3 px-3 text-base resize-none border border-transparent focus:outline-none focus:border-gray-300"
+          />
         </div>
       </div>
+      <aside
+        style={{ height: "calc(100vh - 127px)" }}
+        className="bg-gray-50 max-w-xs w-full border-l border-gray-200"
+      >
+        <div className="px-6 my-4">
+          <div className="border-b border-gray-200">
+            <ButtonToggle
+              toggleDropdown={setAuthorActive}
+              dropdownState={authorActive}
+              title="Author"
+            />
+            <div
+              className={`${
+                authorActive ? "block" : "hidden"
+              } mb-1 relative h-40 overflow-y-hidden flex flex-col`}
+            >
+              <div className="p-1">
+                <SearchField type="text" placeholder="Search" size="sm" />
+              </div>
+              <ul className="mt-2 text-sm flex-1 overflow-y-auto">
+                {(authorLoading || authorError) && <Spinner />}
+                {!authorLoading &&
+                  !authorError &&
+                  authorList.authors.map(author => (
+                    <div key={author._id} className="px-2 py-1.5">
+                      <Checkbox
+                        id={author._id}
+                        checked={!!authorIds.find(ch => ch === author._id)}
+                        onChange={e => selectAuthor(e, author._id)}
+                        title={author.name}
+                      />
+                    </div>
+                  ))}
+              </ul>
+            </div>
+          </div>
+          <div className="border-b border-gray-200">
+            <ButtonToggle
+              toggleDropdown={setCategoryActive}
+              dropdownState={categoryActive}
+              title="Category"
+            />
+            <div
+              className={`${
+                categoryActive ? "block" : "hidden"
+              } mb-1 relative h-40 overflow-y-hidden flex flex-col`}
+            >
+              <div className="p-1">
+                <SearchField type="text" placeholder="Search" size="sm" />
+              </div>
+              <ul className="mt-2 text-sm flex-1 overflow-y-auto">
+                {(catLoading || catError) && <Spinner />}
+                {!catLoading &&
+                  !catError &&
+                  catList.categories.map(category => (
+                    <li
+                      key={category._id}
+                      id={category._id}
+                      onClick={e => setCategoryId(e.target.id)}
+                      className={`${category._id === categoryId &&
+                        "bg-gray-100"} flex items-center justify-between px-2 py-1.5 rounded hover:bg-gray-100 transition duration-150 ease-in-out cursor-pointer`}
+                    >
+                      {category.title}
+                      {category._id === categoryId && (
+                        <Icon icon="check" className="h-5 w-5 text-indigo-600" />
+                      )}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
+          <div className="border-b border-gray-200">
+            <ButtonToggle
+              toggleDropdown={setUploadImageActive}
+              dropdownState={uploadImageActive}
+              title="Upload book cover"
+            />
+            <div className={`${uploadImageActive ? "block" : "hidden"} p-1`}>
+              <UploadFile />
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   );
 };
