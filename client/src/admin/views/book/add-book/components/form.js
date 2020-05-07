@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import ButtonToggle from "./button-toggle";
-import { Checkbox, UploadFile } from "components/field";
+import { Checkbox, CustomInputField, TextArea, UploadFile } from "components/field";
 import { GET_AUTHORS } from "api/author/author-list";
 import { GET_CATEGORIES } from "api/category/category-list";
 import Icon from "components/icon";
@@ -9,6 +9,7 @@ import { SearchField } from "components/search";
 import { Spinner } from "components/spinner";
 
 const Form = ({
+  error,
   title,
   setTitle,
   description,
@@ -40,21 +41,22 @@ const Form = ({
     <div className="flex bg-white text-gray-900">
       <div className="mt-3 px-3 max-w-xl mx-auto w-full">
         <div>
-          <input
-            type="text"
+          <CustomInputField
             placeholder="Add a title"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            className="block w-full py-3 px-3 text-xl font-medium border border-transparent focus:outline-none focus:border-gray-300"
+            error={error}
+            errorType="Book title"
           />
         </div>
         <div className="mt-2">
-          <textarea
+          <TextArea
             rows="20"
             placeholder="Add a description"
             value={description}
             onChange={e => setDescription(e.target.value)}
-            className="block w-full py-3 px-3 text-base resize-none border border-transparent focus:outline-none focus:border-gray-300"
+            error={error}
+            errorType="Book description"
           />
         </div>
       </div>

@@ -12,6 +12,7 @@ const AddBook = () => {
   const [description, setDescription] = useState("");
   const [authorIds, setAuthorIds] = useState([]);
   const [categoryId, setCategoryId] = useState("");
+  const [error, setError] = useState("");
 
   const history = useHistory();
 
@@ -39,7 +40,7 @@ const AddBook = () => {
         }
       });
     } catch (err) {
-      console.log(err);
+      setError(err.message.replace("GraphQL error: ", ""));
     }
   };
 
@@ -60,6 +61,7 @@ const AddBook = () => {
         </div>
       </div>
       <Form
+        error={error}
         title={title}
         setTitle={setTitle}
         description={description}
