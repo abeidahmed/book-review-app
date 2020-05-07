@@ -40,6 +40,8 @@ const resolvers = {
 
       if (!title) throw new Error("Book title cannot be blank.");
 
+      if (!description) throw new Error("Description cannot be blank.");
+
       if (title.length > 255) throw new Error("Book title exceeds 255 characters.");
 
       try {
@@ -53,6 +55,10 @@ const resolvers = {
 
         await book.save();
 
+        /**
+         * Find the author(s) of the book created and push the books
+         * into the respective authors collection.
+         */
         const authors = await Author.find({ _id: { $in: authorIds } });
         authors.map(async author => {
           author.books.push(book);

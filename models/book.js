@@ -8,7 +8,10 @@ const bookSchema = new Schema(
       maxlength: 255,
       unique: true
     },
-    description: String,
+    description: {
+      type: String,
+      required: true
+    },
     authors: [
       {
         type: Schema.Types.ObjectId,
