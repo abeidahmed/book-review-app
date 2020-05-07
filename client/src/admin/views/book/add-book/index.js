@@ -40,7 +40,7 @@ const AddBook = () => {
         }
       });
     } catch (err) {
-      setError(err.message.replace("GraphQL error: ", ""));
+      setError(err.message);
     }
   };
 
