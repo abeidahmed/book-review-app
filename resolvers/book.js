@@ -36,11 +36,11 @@ const resolvers = {
       if (!isAdmin) throw new Error("Unauthorized user.");
 
       const isMatch = await Book.findOne({ title });
-      if (isMatch) throw new Error("Book already exists.");
+      if (isMatch) throw new Error("Book title already exists.");
 
       if (!title) throw new Error("Book title cannot be blank.");
 
-      if (!description) throw new Error("Description cannot be blank.");
+      if (!description) throw new Error("Book description cannot be blank.");
 
       if (title.length > 255) throw new Error("Book title exceeds 255 characters.");
 
